@@ -27,6 +27,6 @@
 	8.针对重复注册用户提示已注册并响应注册人脸大头贴响应界面
 
 # 技术参考
-	1.人脸合成技术参考[https://blog.csdn.net/chengxuyuan997/article/details/80809843]
-	2.人脸性别识别参考[]
-	3.人脸检测参考[]
+	1.[人脸合成技术参考](https://blog.csdn.net/chengxuyuan997/article/details/80809843)
+	2.[人脸性别识别参考]()
+	3.[人脸检测参考]()
