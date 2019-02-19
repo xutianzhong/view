@@ -1,9 +1,12 @@
 import cv2
 import dlib
 import numpy
+import os
+import random
+import uuid
 
 # 接口调用测试,报错证明生成失败
-# face_Align('大头贴图片','替换人脸图片','生成图片位置和名称')
+# face_Align('替换人脸图片','男或女')
 
 # 校验图片中人脸的个数
 # check_img('图片位置')
@@ -170,8 +173,26 @@ def correct_colours(im1, im2, landmarks1):
     return (im2.astype(numpy.float64) * im1_blur.astype(numpy.float64) /
             im2_blur.astype(numpy.float64))
 
+def face_Align(path, sex):
+    Base_path = "image/"
+    if sex=="男":
+        Base_path = Base_path+"man"
+    else:
+        Base_path = Base_path + "woman"
+    allPath = all_path(Base_path)
+    Base_path = allPath[random.uniform(0, len(allPath)-1)]
+    face_Align_over(path, Base_path, uuid.uuid1()+".jpg")
 
-def face_Align(Base_path,cover_path,save_path):
+
+def all_path(dirname):
+    result = []
+    for maindir, subdir, file_name_list in os.walk(dirname):
+        for filename in file_name_list:
+            apath = os.path.join(maindir, filename)
+            result.append(apath)
+    return result
+
+def face_Align_over(Base_path,cover_path,save_path):
     im1, landmarks1 = read_im_and_landmarks(Base_path)
     im2, landmarks2 = read_im_and_landmarks(cover_path)
 
