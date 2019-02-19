@@ -181,7 +181,7 @@ def face_Align(path, sex):
         Base_path = Base_path + "woman"
     allPath = all_path(Base_path)
     Base_path = allPath[random.uniform(0, len(allPath)-1)]
-    face_Align_over(path, Base_path, uuid.uuid1()+".jpg")
+    face_Align_over(path, Base_path, "image/over/"+uuid.uuid1()+".jpg")
 
 
 def all_path(dirname):
