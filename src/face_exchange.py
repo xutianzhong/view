@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import cv2
 import dlib
 import numpy
@@ -52,8 +54,9 @@ def read_im_and_landmarks(fname):
     return im, s
 
 def check_img(imgPath):
-    im1, landmarks1 = read_im_and_landmarks(imgPath) # 底图
-    return len(landmarks1)
+    im = cv2.imread(imgPath, cv2.IMREAD_COLOR)
+    rects = detector(im, 1)
+    return len(rects)
 
 def annotate_landmarks(im, landmarks):
     '''
@@ -210,3 +213,4 @@ def face_Align_over(Base_path,cover_path,save_path):
     output_im = im1 * (1.0 - combined_mask) + warped_corrected_im2 * combined_mask
 
     cv2.imwrite(save_path, output_im)
+
