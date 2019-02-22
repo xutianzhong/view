@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import cv2
 import dlib
 import numpy
@@ -183,8 +182,10 @@ def face_Align(path, sex):
     else:
         Base_path = Base_path + "woman"
     allPath = all_path(Base_path)
-    Base_path = allPath[random.uniform(0, len(allPath)-1)]
-    face_Align_over(path, Base_path, "image/over/"+uuid.uuid1()+".jpg")
+    Base_path = allPath[int(random.uniform(0, len(allPath)-1))]
+    uuid_str="image/over/" + str(uuid.uuid1()) + ".jpg"
+    face_Align_over(path, Base_path, uuid_str)
+    return uuid_str
 
 
 def all_path(dirname):
@@ -213,4 +214,6 @@ def face_Align_over(Base_path,cover_path,save_path):
     output_im = im1 * (1.0 - combined_mask) + warped_corrected_im2 * combined_mask
 
     cv2.imwrite(save_path, output_im)
+
+
 
